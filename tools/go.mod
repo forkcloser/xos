@@ -81,7 +81,7 @@ require (
 	github.com/fatih/color v1.19.0 // indirect
 	github.com/fatih/structtag v1.2.0 // indirect
 	github.com/firefart/nonamedreturns v1.0.8 // indirect
-	github.com/forkcloser/dot v1.2.1 // indirect
+	github.com/forkcloser/dot v1.3.0 // indirect
 	github.com/forkcloser/go-graphviz v0.5.1 // indirect
 	github.com/forkcloser/godolint v0.4.0 // indirect
 	github.com/fsnotify/fsnotify v1.10.1 // indirect
