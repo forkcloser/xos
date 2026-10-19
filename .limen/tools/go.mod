@@ -83,7 +83,7 @@ require (
 	github.com/firefart/nonamedreturns v1.0.8 // indirect
 	github.com/forkcloser/dot v1.3.1 // indirect
 	github.com/forkcloser/go-graphviz v0.5.2 // indirect
-	github.com/forkcloser/godolint v0.4.0 // indirect
+	github.com/forkcloser/godolint v0.5.0 // indirect
 	github.com/fsnotify/fsnotify v1.10.1 // indirect
 	github.com/fzipp/gocyclo v0.6.0 // indirect
 	github.com/ghostiam/protogetter v1.0.1 // indirect
@@ -135,7 +135,7 @@ require (
 	github.com/karamaru-alpha/copyloopvar v1.2.2 // indirect
 	github.com/kisielk/errcheck v1.20.0 // indirect
 	github.com/kkHAIKE/contextcheck v1.1.6 // indirect
-	github.com/klauspost/compress v1.20.1 // indirect
+	github.com/klauspost/compress v1.20.3 // indirect
 	github.com/kulti/thelper v0.7.1 // indirect
 	github.com/kunwardeep/paralleltest v1.0.15 // indirect
 	github.com/ldez/exptostd v0.4.5 // indirect
@@ -165,7 +165,7 @@ require (
 	github.com/moricho/tparallel v0.3.2 // indirect
 	github.com/muesli/cancelreader v0.2.2 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
-	github.com/mycophonic/primordium v0.14.0 // indirect
+	github.com/mycophonic/primordium v0.15.0 // indirect
 	github.com/nakabonne/nestif v0.3.1 // indirect
 	github.com/nishanths/exhaustive v0.13.0 // indirect
 	github.com/nishanths/predeclared v0.2.2 // indirect
