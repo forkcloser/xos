@@ -146,10 +146,10 @@ github.com/fatih/structtag v1.2.0 h1:/OdNE99OxoI/PqaW/SuSK9uxxT3f/tcSZgon/ssNSx4
 github.com/fatih/structtag v1.2.0/go.mod h1:mBJUNpUnHmRKrKlQQlmCrh5PuhftFbNv8Ys4/aAZl94=
 github.com/firefart/nonamedreturns v1.0.8 h1:iB32Dl17zJl1zlVEj/WlUWgx0HiRyQ85OUw1WHa4/II=
 github.com/firefart/nonamedreturns v1.0.8/go.mod h1:vxFNvm5AfP/8rgAKFzYmnqx0yp1HjrYsErZ9pHPTznA=
-github.com/forkcloser/dot v1.3.0 h1:5BZ8oE3U7nhheOcgGxWwkca5xbpu+c/1oXfcQ5N6Zv4=
-github.com/forkcloser/dot v1.3.0/go.mod h1:xUgYLXN4L59fE+WzPORysuUZ+Fveqf3eysgp0VCrSFY=
-github.com/forkcloser/go-graphviz v0.5.1 h1:F6w6DEOZ1W7c1tyHSbe+T9Br5mpZWjuJ6BzSQu8EcoY=
-github.com/forkcloser/go-graphviz v0.5.1/go.mod h1:EbSWnUlAz5sNUrAeWXI45Fiy074kdsvwXuVuD8nO5Eo=
+github.com/forkcloser/dot v1.3.1 h1:jhKEBkdZ8PJYgyohT74+I0zYr0NRXwdTWAsZfAJFaBU=
+github.com/forkcloser/dot v1.3.1/go.mod h1:pM3Q/7e6Ac/vY+7J21Q7QoL69wYSni71xt5SfUkR8Ck=
+github.com/forkcloser/go-graphviz v0.5.2 h1:mtZGeDipgCb+UvnkKasn5NGzRZc9tDQBpayMbBkNqkI=
+github.com/forkcloser/go-graphviz v0.5.2/go.mod h1:LPwbeLn2JeZaoM82ooQOdhghZWX7rfKGo1694ipcs00=
 github.com/forkcloser/godolint v0.4.0 h1:a0WMn1ypt09nqCbrnCTVSXq8mZY46a8HLBp2XhX6iAI=
 github.com/forkcloser/godolint v0.4.0/go.mod h1:5fnWboatgCAn/WkVAtGBJK2GJddi4r36VZYpXFPNBdo=
 github.com/frankban/quicktest v1.14.3 h1:FJKSZTDHjyhriyC81FLQ0LY93eSai0ZyR/ZIkd3ZUKE=
@@ -577,8 +577,8 @@ golang.org/x/exp/typeparams v0.0.0-20220428152302-39d4317da171/go.mod h1:AbB0pIl
 golang.org/x/exp/typeparams v0.0.0-20230203172020-98cc5a0785f9/go.mod h1:AbB0pIl9nAr9wVwH+Z2ZpaocVmF5I4GyWCDIsVjR0bk=
 golang.org/x/exp/typeparams v0.0.0-20260908205506-85c1c2202aba h1:ZoZmFkcuQ289xJilBm9Ck3W+/okrhXc4LUpbtKFQE4k=
 golang.org/x/exp/typeparams v0.0.0-20260908205506-85c1c2202aba/go.mod h1:qkMnvgP8C7+xkci04txL2SJFc/0PGqnkf6gs5JUC43E=
-golang.org/x/image v0.46.0 h1:b1+oYj0Jbp6K5MDT4i4/eZpYlk3V8SJhhDKh6LBHAyQ=
-golang.org/x/image v0.46.0/go.mod h1:3B3W05VGVQyuXucLINLjXKrqISASfi4Xj+iCVkLMwew=
+golang.org/x/image v0.47.0 h1:za/8gVz++PPZqmZJBNSISICN5Rrj5zixP/8K++fgmqo=
+golang.org/x/image v0.47.0/go.mod h1:IkN5o4A7vq55vXN8FWjjnhg9Rs2GOtffqsSi9mWAKYE=
 golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3/go.mod h1:UVdnD1Gm6xHRNCYTkRU2/jEulfH38KcIWyp/GAMgvoE=
 golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961/go.mod h1:wehouNa3lNwaWXcvxsM5YxQ5yQlVC4a0KAMCusXpPoU=
 golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3/go.mod h1:6SW0HCj/g11FgYtHlgUYUwCkIfeOF89ocIRzGO/8vkc=
