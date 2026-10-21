@@ -193,7 +193,9 @@ func createFileShareDelete(
 	handle = windows.Handle(rawHandle)
 
 	if handle == windows.InvalidHandle {
-		return handle, false, lastErr
+		// The Errno stays the PathError.Err OpenFile makes of it, as os keeps
+		// it: os.IsNotExist reads it by identity, and the text is os's.
+		return handle, false, lastErr //nolint:wrapcheck // see above
 	}
 
 	if lastErr == windows.ERROR_ALREADY_EXISTS {
