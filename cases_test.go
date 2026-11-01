@@ -25,8 +25,6 @@ import (
 	"syscall"
 	"testing"
 
-	"gotest.tools/v3/assert"
-
 	"github.com/forkcloser/xos"
 )
 
@@ -35,7 +33,8 @@ func TestOpenNoName(t *testing.T) {
 
 	file, err := xos.Open("")
 	if err == nil {
-		assert.Check(t, file.Close())
+		_ = file.Close()
+
 		t.Fatal(`Open("") succeeded`)
 	}
 }
@@ -68,7 +67,8 @@ func TestOpenErrors(t *testing.T) {
 
 		file, err := xos.OpenFile(path, test.flag, 0)
 		if err == nil {
-			assert.Check(t, file.Close())
+			_ = file.Close()
+
 			t.Fatalf("OpenFile(%q, %#x) succeeded", path, test.flag)
 		}
 
@@ -96,7 +96,9 @@ func TestDevNull(t *testing.T) {
 		}
 
 		fromFile, err := file.Stat()
-		assert.Check(t, file.Close())
+		if closeErr := file.Close(); closeErr != nil {
+			t.Error(closeErr)
+		}
 
 		if err != nil {
 			t.Fatalf("Open(%s).Stat(): %v", name, err)
@@ -125,7 +127,9 @@ func TestDevNull(t *testing.T) {
 		t.Fatalf("OpenFile(DevNull, O_WRONLY|O_CREATE|O_TRUNC): %v", err)
 	}
 
-	assert.Check(t, file.Close())
+	if err := file.Close(); err != nil {
+		t.Error(err)
+	}
 }
 
 // TestLongPath: a path around and past 248 bytes, where Windows needs the

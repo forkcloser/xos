@@ -71,7 +71,3 @@ golangci:
               # The Windows open and rename: CreateFile with FILE_SHARE_DELETE and
               # SetFileInformationByHandle are not in syscall.
               - golang.org/x/sys/windows
-licenses:
-  ignore:
-    # Apache-2.0 at the module root, which go-licenses does not find.
-    - gotest.tools/v3
