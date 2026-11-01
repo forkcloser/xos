@@ -27,16 +27,16 @@ func inside(dir, name string) string {
 }
 
 func FuzzPaths(f *testing.F) {
-	f.Add("file", "x", uint8(0))
-	f.Add("a/b/c", "", uint8(1))
-	f.Add("name with spaces.txt", "data", uint8(2))
-	f.Add("ünïcödé", "d", uint8(3))
-	f.Add("trailing/", "", uint8(4))
-	f.Add("..", "", uint8(5))
-	f.Add("a\x00b", "", uint8(6))
-	f.Add(strings.Repeat("l", 260), "", uint8(7))
+	f.Add("file", uint8(0))
+	f.Add("a/b/c", uint8(1))
+	f.Add("name with spaces.txt", uint8(2))
+	f.Add("ünïcödé", uint8(3))
+	f.Add("trailing/", uint8(4))
+	f.Add("..", uint8(5))
+	f.Add("a\x00b", uint8(6))
+	f.Add(strings.Repeat("l", 260), uint8(7))
 
-	f.Fuzz(func(t *testing.T, name, data string, pick uint8) {
+	f.Fuzz(func(t *testing.T, name string, pick uint8) {
 		ours, theirs := t.TempDir(), t.TempDir()
 
 		// The same starting state on both sides: a file where the seed
@@ -83,8 +83,6 @@ func FuzzPaths(f *testing.F) {
 		if got, want := onDisk(ourPath), onDisk(theirPath); got != want {
 			t.Fatalf("%s(%q): xos left %q, os %q", callName, name, got, want)
 		}
-
-		_ = data
 	})
 }
 
