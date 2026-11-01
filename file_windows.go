@@ -9,11 +9,9 @@
 // Windows file operations with FILE_SHARE_DELETE.
 //
 // Go's os.Open/os.OpenFile open handles with FILE_SHARE_READ|FILE_SHARE_WRITE
-// but not FILE_SHARE_DELETE. This prevents os.Rename or os.Remove while any
-// handle is open. These wrappers use CreateFile directly with FILE_SHARE_DELETE
-// added, matching Rust's standard library behavior.
-//
-// Flag mapping follows Go's internal syscall.Open logic.
+// but not FILE_SHARE_DELETE, which refuses os.Rename and os.Remove while any
+// handle is open. OpenFile here is syscall.Open's Windows mapping with the
+// share mode widened, kept in its shape so the two read side by side.
 
 package xos
 
@@ -21,6 +19,7 @@ import (
 	"errors"
 	"io/fs"
 	"os"
+	"reflect"
 	"syscall"
 	"unsafe"
 
@@ -137,12 +136,40 @@ func OpenFile(path string, flag int, perm os.FileMode) (*os.File, error) {
 		}
 	}
 
-	// NOTE: os.NewFile does not set the internal appendMode field on Windows.
-	// This means (*File).WriteAt will not return ErrPermission for O_APPEND files
-	// as os.OpenFile does. The kernel-level append enforcement via FILE_APPEND_DATA
-	// is still correct for Write — only WriteAt behavior differs. This is an
-	// inherent limitation of os.NewFile; there is no public API to set appendMode.
-	return os.NewFile(uintptr(handle), path), nil
+	file := os.NewFile(uintptr(handle), path)
+
+	if flag&os.O_APPEND != 0 {
+		if err := markAppend(file); err != nil {
+			_ = file.Close()
+
+			return nil, &os.PathError{Op: opOpen, Path: path, Err: err}
+		}
+	}
+
+	return file, nil
+}
+
+var errAppendMark = errors.New("xos: os.File has no appendMode field to set")
+
+// markAppend sets the mark os.OpenFile sets on a file opened with O_APPEND
+// and os.NewFile cannot: WriteAt then refuses, as it does on a file os
+// opened. The field is os's own, found by name; a Go release that moves it
+// fails here and in the parity test before it reaches a consumer.
+func markAppend(file *os.File) error {
+	outer := reflect.ValueOf(file).Elem()
+	if outer.NumField() != 1 || outer.Field(0).Kind() != reflect.Pointer || outer.Field(0).IsNil() {
+		return errAppendMark
+	}
+
+	field := outer.Field(0).Elem().FieldByName("appendMode")
+	if !field.IsValid() || field.Kind() != reflect.Bool {
+		return errAppendMark
+	}
+
+	// #nosec G103 -- the field's own address, written as the bool it is
+	reflect.NewAt(field.Type(), unsafe.Pointer(field.UnsafeAddr())).Elem().SetBool(true)
+
+	return nil
 }
 
 // Truncate changes the size of the named file.
