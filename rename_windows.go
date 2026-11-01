@@ -17,11 +17,11 @@ import (
 )
 
 // Rename renames (moves) oldpath to newpath, as os.Rename does, and on a volume
-// that has the POSIX-semantics rename (NTFS from Windows 10 1709) replaces a
-// newpath another handle holds open with FILE_SHARE_DELETE, as a rename does on
-// Unix. A volume without it (FAT, exFAT, some shares) gets os.Rename
-// (MoveFileEx), which refuses a held newpath: the property is the volume's.
-// A directory is moved as os.Rename moves one.
+// that has the POSIX-semantics rename (NTFS) replaces a newpath another handle
+// holds open with FILE_SHARE_DELETE, as a rename does on Unix. A volume without
+// it (FAT, exFAT, some shares) gets os.Rename (MoveFileEx), which refuses a
+// held newpath: the property is the volume's. A directory is moved as os.Rename
+// moves one.
 //
 //nolint:wrapcheck // Thin wrapper matching os.Rename signature.
 func Rename(oldpath, newpath string) error {
@@ -43,9 +43,9 @@ type fileRenameInfo struct {
 
 // posixRename asks the filesystem to take newpath's name over at once, a handle
 // still open on the old newpath keeping the old file until it closes, and
-// reports whether it did. NTFS from Windows 10 1709 does, every time a rename
-// can succeed at all; FAT, exFAT, some shares and older Windows refuse the
-// request itself, every time, and os.Rename then does there what it does.
+// reports whether it did. NTFS does, every time a rename can succeed at all;
+// FAT, exFAT and some shares refuse the request itself, every time, and
+// os.Rename then does there what it does.
 func posixRename(oldpath, newpath string) bool {
 	target, err := filepath.Abs(newpath)
 	if err != nil {

@@ -16,10 +16,7 @@ err = xos.WriteFile(path, data, 0o644)
 ```
 
 A program that opens, creates, renames or reads files that another process may
-replace under it uses `xos` where it would use `os`. The one thing `os` does on
-Windows that `xos` does not is the `\\?\` prefix for a long path on Windows 10
-before 1703 and Server 2016; later releases make the process long-path aware
-and neither needs it.
+replace under it uses `xos` where it would use `os`.
 
 Moved from primordium's `filesystem/xos`, which it replaces.
 
