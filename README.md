@@ -12,7 +12,7 @@ every platform.
 import "github.com/forkcloser/xos"
 
 f, err := xos.OpenFile(path, os.O_RDWR|os.O_CREATE, 0o644)
-err = xos.WriteFile(path, data, 0o644) // writes beside, then renames over
+err = xos.WriteFile(path, data, 0o644)
 ```
 
 A program that opens, creates, renames or reads files that another process may
